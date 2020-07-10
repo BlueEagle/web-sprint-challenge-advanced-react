@@ -23,7 +23,7 @@ export const useForm = () => {
     setValues(values) // set state, like normal
     window.localStorage.setItem(key, JSON.stringify(values))
   }
-  
+
   const handleChanges = e => {
     setNewValues({
       ...values,
