@@ -11,7 +11,7 @@ test("form header renders", async () => {
   expect(await screen.findByText(/Checkout Form/i)).toBeInTheDocument()
 });
 
-test("form shows success message on submit with form details", () => {
+test("form shows success message on submit with form details", async () => {
   render(<CheckoutForm />)
 
   userEvent.type(screen.getByLabelText(/First Name:/i), 'John') // first name
@@ -20,4 +20,7 @@ test("form shows success message on submit with form details", () => {
   userEvent.type(screen.getByLabelText(/City:/i), 'Doeville') // first name
   userEvent.type(screen.getByLabelText(/State:/i), 'The state of affairs') // first name
   userEvent.type(screen.getByLabelText(/Zip:/i), '73526') // first name
+  userEvent.click(screen.getByTestId('formSubmit'))
+
+  expect(await screen.findByTestId('successMessage')).toBeInTheDocument()
 });
